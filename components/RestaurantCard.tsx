@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Restaurant } from '@/types/restaurant';
 
 interface RestaurantCardProps {
@@ -72,12 +73,18 @@ export default function RestaurantCard({ restaurant }: RestaurantCardProps) {
         <p className="text-sm text-gray-500 line-clamp-2">{restaurant.description}</p>
 
         <div className="mt-4 flex gap-2">
-          <button className="flex-1 px-3 py-2 text-sm bg-red-500 text-white rounded hover:bg-red-600 transition-colors">
+          <Link
+            href={`/restaurant/${restaurant.id}`}
+            className="flex-1 px-3 py-2 text-sm text-center bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
+          >
             View Details
-          </button>
-          <button className="px-3 py-2 text-sm border border-gray-300 rounded hover:bg-gray-50 transition-colors">
+          </Link>
+          <a
+            href={`tel:${restaurant.phone}`}
+            className="px-3 py-2 text-sm border border-gray-300 rounded hover:bg-gray-50 transition-colors"
+          >
             📞
-          </button>
+          </a>
         </div>
       </div>
     </div>
