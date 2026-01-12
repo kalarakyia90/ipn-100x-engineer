@@ -5,23 +5,16 @@ import SearchForm from '@/components/SearchForm';
 import RestaurantCard from '@/components/RestaurantCard';
 import { Restaurant } from '@/types/restaurant';
 
-// TODO: Workshop Exercise 5 - Improve UI with better styling
-// Consider adding animations, better loading states, and responsive design improvements
-
 export default function Home() {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
 
-  // console.log('Home component rendered'); // Dead code - should be removed
-
   const handleSearch = async (location: string) => {
     setLoading(true);
     setError(null);
     setHasSearched(true);
-
-    console.log('Searching for restaurants near:', location); // Dead code - should be removed
 
     try {
       const response = await fetch(`/api/restaurants?address=${encodeURIComponent(location)}`);
@@ -32,7 +25,6 @@ export default function Home() {
       }
 
       setRestaurants(data.restaurants);
-      console.log('Found restaurants:', data.restaurants.length); // Dead code - should be removed
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
       setRestaurants([]);
@@ -86,8 +78,6 @@ export default function Home() {
               <h2 className="text-xl font-semibold text-gray-800 mb-4">
                 Found {restaurants.length} restaurants near you
               </h2>
-              {/* TODO: Workshop Exercise 1 - Add opening hours display */}
-              {/* Currently the opening hours are available in the data but not displayed */}
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {restaurants.map((restaurant) => (
                   <RestaurantCard key={restaurant.id} restaurant={restaurant} />
@@ -102,15 +92,12 @@ export default function Home() {
               <p className="text-gray-500 text-lg">
                 Enter your location to find nearby restaurants
               </p>
-              <p className="text-gray-400 text-sm mt-2">
-                Try searching for "San Francisco" or "94102"
-              </p>
+              <<p className="mt-3 text-sm text-gray-500">
+  💡 Tip: Try searching for &quot;San Francisco&quot;, &quot;Downtown&quot;, or a zip code like &quot;94102&quot;
+            </p>
             </div>
           )}
         </section>
-
-        {/* TODO: Workshop Exercise 3 - Integrate real maps API */}
-        {/* Add a map view showing restaurant locations */}
       </div>
 
       {/* Footer */}
