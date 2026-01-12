@@ -92,7 +92,7 @@ export default function Home() {
               <p className="text-gray-500 text-lg">
                 Enter your location to find nearby restaurants
               </p>
-              <<p className="mt-3 text-sm text-gray-500">
+              <p className="mt-3 text-sm text-gray-500">
   💡 Tip: Try searching for &quot;San Francisco&quot;, &quot;Downtown&quot;, or a zip code like &quot;94102&quot;
             </p>
             </div>
